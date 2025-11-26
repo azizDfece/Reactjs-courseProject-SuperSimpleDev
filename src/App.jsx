@@ -10,7 +10,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get('/api/cart-items').then(
+    axios.get('/api/cart-items?expand=product').then(
       (response) => {
         setCart(response.data)
 

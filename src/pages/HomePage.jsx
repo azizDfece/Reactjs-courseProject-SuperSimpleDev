@@ -4,7 +4,7 @@ import { products } from '../../starting-code/data/products'
 import { Header } from '../components/Header'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-
+import { formatMoney } from '../utils/money'
 export function HomePage({ cart }) {
     let [products, setProducts] = useState([])
 
@@ -42,14 +42,14 @@ export function HomePage({ cart }) {
 
                                 <div className="product-rating-container">
                                     <img className="product-rating-stars"
-                                        src={`images/ratings/rating-${product.rating.stars}.png`} />
+                                        src={`images/ratings/rating-${product.rating.stars * 10}.png`} />
                                     <div className="product-rating-count link-primary">
                                         {product.rating.count}
                                     </div>
                                 </div>
 
                                 <div className="product-price">
-                                    ${(product.priceCents / 100).toFixed()}
+                                    {formatMoney(product.priceCents)}
                                 </div>
 
                                 <div className="product-quantity-container">
