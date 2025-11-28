@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { formatMoney } from '../../utils/money'
 import { OrderSummary } from './OrderSummary'
 
-function CheckoutPage({ cart }) {
+function CheckoutPage({ cart, loadCart }) {
 
 
     const [deliverOptions, setDeliverOptions] = useState([])
@@ -25,7 +25,7 @@ function CheckoutPage({ cart }) {
             }
         ).catch(e => console.log(e)
         )
-    }, [])
+    }, [cart])
 
 
 
@@ -56,7 +56,7 @@ function CheckoutPage({ cart }) {
                 <div className="page-title">Review your order</div>
 
                 <div className="checkout-grid">
-                    <OrderSummary cart={cart} deliverOptions={deliverOptions} />
+                    <OrderSummary cart={cart} deliverOptions={deliverOptions} loadCart={loadCart} />
 
                     <div className="payment-summary">
                         {isLoding ? <div className="loader-overlay">
